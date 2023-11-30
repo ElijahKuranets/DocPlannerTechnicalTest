@@ -84,12 +84,12 @@ public class AvailabilityController : ControllerBase
     [HttpPost("TakeSlot")]
     public async Task<IActionResult> TakeSlot([FromBody] Slot slot)
     {
-        _logger.LogInformation("Attempting to take a slot");
+        _logger.LogInformation("Attempting to take a timeSlot");
 
         if (slot == null)
         {
-            _logger.LogWarning("Slot data is null in TakeSlot");
-            return BadRequest("Slot data is required.");
+            _logger.LogWarning("TimeSlot data is null in TakeSlot");
+            return BadRequest("TimeSlot data is required.");
         }
 
         try
@@ -97,13 +97,13 @@ public class AvailabilityController : ControllerBase
             var success = await _slotService.TakeSlotAsync(slot);
             if (success)
             {
-                _logger.LogInformation("Slot successfully booked");
-                return Ok("Slot successfully booked.");
+                _logger.LogInformation("TimeSlot successfully booked");
+                return Ok("TimeSlot successfully booked.");
             }
             else
             {
-                _logger.LogWarning("Failed to book the slot");
-                return BadRequest("Failed to book the slot.");
+                _logger.LogWarning("Failed to book the timeSlot");
+                return BadRequest("Failed to book the timeSlot.");
             }
         }
         catch (Exception ex)

@@ -1,6 +1,6 @@
 namespace DocPlanner.Interfaces;
 
-public interface ISlot
+public interface ITimeSlot
 {
     DateTime Start { get; set; }
     DateTime End { get; set; }

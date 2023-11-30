@@ -44,7 +44,7 @@ public class SlotService : ISlotService
         }
     }
     
-    public async Task<IEnumerable<Slot>> GetWeeklySlotsAsync(DateTime date)
+    public async Task<IEnumerable<TimeSlot>> GetWeeklySlotsAsync(DateTime date)
     {
         var formattedDate = date.ToString("yyyyMMdd");
         _logger.LogInformation("Requesting weekly slots for date: {Date}", formattedDate);
@@ -56,7 +56,7 @@ public class SlotService : ISlotService
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                var availability = JsonConvert.DeserializeObject<IEnumerable<Slot>>(content);
+                var availability = JsonConvert.DeserializeObject<IEnumerable<TimeSlot>>(content);
                 return availability;
             }
             else
@@ -74,7 +74,7 @@ public class SlotService : ISlotService
 
     public async Task<bool> TakeSlotAsync(Slot slot)
     {
-        _logger.LogInformation("Requesting taking slot ");
+        _logger.LogInformation("Requesting taking Slot ");
         try
         {
             var jsonContent = JsonConvert.SerializeObject(slot);
@@ -85,7 +85,7 @@ public class SlotService : ISlotService
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error occurred while taking slot");
+            _logger.LogError(ex, "Error occurred while taking Slot");
             throw; 
         }
     }

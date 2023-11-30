@@ -1,9 +1,10 @@
-using Serilog;
+﻿using Serilog;
 using System.Text;
 using System.Net.Http.Headers;
 using DocPlanner.Interfaces;
 using DocPlanner.Models;
 using DocPlanner.Services;
+using Polly;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
@@ -20,11 +21,21 @@ builder.Host.UseSerilog();
 builder.Services.AddHttpClient("Base64AuthClient", client =>
 {
     var apiConfig = builder.Configuration.GetSection("SlotServiceApi").Get<SlotServiceApiConfig>();
-    client.BaseAddress = new Uri(apiConfig.BaseUrl);
+    client.BaseAddress = new Uri(apiConfig!.BaseUrl);
 
     var authToken = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{apiConfig.Username}:{apiConfig.Password}"));
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authToken);
-});
+})
+    .AddTransientHttpErrorPolicy(policy => policy.WaitAndRetryAsync(new[]
+    {
+        TimeSpan.FromSeconds(1),
+        TimeSpan.FromSeconds(5),
+        TimeSpan.FromSeconds(10)
+    }))
+    .AddTransientHttpErrorPolicy(policy => policy.CircuitBreakerAsync(
+        handledEventsAllowedBeforeBreaking: 3,
+        durationOfBreak: TimeSpan.FromSeconds(30)
+    )); ;
 
 // Register ISlotService
 builder.Services.AddTransient<ISlotService, SlotService>();
