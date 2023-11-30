@@ -26,15 +26,6 @@ builder.Services.AddHttpClient("Base64AuthClient", client =>
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authToken);
 });
 
-builder.Services.AddHttpClient("PlainTextAuthClient", client =>
-{
-    var apiConfig = builder.Configuration.GetSection("SlotServiceApi").Get<SlotServiceApiConfig>();
-    client.BaseAddress = new Uri(apiConfig.BaseUrl);
-
-    var authToken = $"{apiConfig.Username}:{apiConfig.Password}";
-    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authToken);
-});
-
 // Register ISlotService
 builder.Services.AddTransient<ISlotService, SlotService>();
 
