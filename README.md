@@ -30,5 +30,7 @@ dotnet build
 
 dotnet run 
 
+![Screenshot 2023-12-01 080448](https://github.com/ElijahKuranets/DocPlannerTechnicalTest/assets/25877866/5adde396-5375-44c2-8c09-7b3f10788a76)
+
 ## Contact
 If you have any questions or comments, please feel free to contact me at [your email].
