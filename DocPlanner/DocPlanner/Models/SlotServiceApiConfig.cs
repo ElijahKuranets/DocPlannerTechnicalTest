@@ -1,8 +1,6 @@
-using DocPlannerTechnicalTest.Interfaces;
-
 namespace DocPlanner.Models;
 
-public class SlotServiceApiConfig : ISlotServiceApiConfig
+public class SlotServiceApiConfig 
 {
     public string BaseUrl { get; set; }
     public string Username { get; set; }

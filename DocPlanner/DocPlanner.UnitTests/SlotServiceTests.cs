@@ -57,7 +57,7 @@ public class SlotServiceTests
         var httpClient = SetupHttpClient(httpResponse);
         _mockHttpClientFactory.Setup(f => f.CreateClient("Base64AuthClient")).Returns(httpClient);
 
-        var slotService = new SlotService(_mockHttpClientFactory.Object, _mockLogger.Object);
+        var slotService = new SlotService(_mockHttpClientFactory.Object, _mockLogger.Object );
 
         // Act
         var result = await slotService.GetWeeklyAvailabilityAsync(DateTime.Now);
@@ -177,6 +177,7 @@ public class SlotServiceTests
         // Arrange
         var slotToTake = new Slot
         {
+            FacilityId = Guid.NewGuid(),
             Start = new DateTime(2023, 06, 21, 12, 20, 00),
             End = new DateTime(2023, 06, 21, 12, 20, 00),
             Comments = "broke leg for test",

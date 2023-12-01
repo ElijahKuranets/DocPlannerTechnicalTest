@@ -1,8 +1,6 @@
-using DocPlanner.Interfaces;
-
 namespace DocPlanner.Models;
 
-public class TimeSlot : ITimeSlot
+public class TimeSlot
 {
     public DateTime Start { get; set; }
     public DateTime End { get; set; }

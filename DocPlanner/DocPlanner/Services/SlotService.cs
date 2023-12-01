@@ -7,12 +7,14 @@ namespace DocPlanner.Services;
 
 public class SlotService : ISlotService
 {
-    private readonly HttpClient _httpClientFactory;
+    private readonly HttpClient _httpClient;
     private readonly ILogger<SlotService> _logger;
 
-    public SlotService(IHttpClientFactory httpClientFactory, ILogger<SlotService> logger)
+    public SlotService(
+        IHttpClientFactory httpClientFactory, 
+        ILogger<SlotService> logger)
     {
-        _httpClientFactory = httpClientFactory.CreateClient("Base64AuthClient");
+        _httpClient = httpClientFactory.CreateClient("Base64AuthClient");
         _logger = logger;
     }
 
@@ -23,7 +25,7 @@ public class SlotService : ISlotService
 
         try
         {
-            var response = await _httpClientFactory.GetAsync($"GetWeeklyAvailability/{formattedDate}");
+            var response = await _httpClient.GetAsync($"GetWeeklyAvailability/{formattedDate}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -51,7 +53,7 @@ public class SlotService : ISlotService
         
         try
         {
-            var response = await _httpClientFactory.GetAsync($"GetWeeklySlots/{formattedDate}");
+            var response = await _httpClient.GetAsync($"GetWeeklySlots/{formattedDate}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -77,9 +79,19 @@ public class SlotService : ISlotService
         _logger.LogInformation("Requesting taking Slot ");
         try
         {
-            var jsonContent = JsonConvert.SerializeObject(slot);
+            var start = slot.Start.ToString("yyyy-MM-dd HH:mm:ss");
+            var end = slot.End.ToString("yyyy-MM-dd HH:mm:ss");
+            var updatedSlot = new
+            {
+                FacilityId = slot.FacilityId,
+                Start = start,
+                End = end,
+                Patient = slot.Patient,
+                Comments = slot.Comments
+            }; 
+            var jsonContent = JsonConvert.SerializeObject(updatedSlot);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-            var response = await _httpClientFactory.PostAsync("TakeSlot", content);
+            var response = await _httpClient.PostAsync("TakeSlot", content);
 
             return response.IsSuccessStatusCode;
         }

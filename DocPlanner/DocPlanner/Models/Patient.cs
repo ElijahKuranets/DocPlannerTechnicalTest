@@ -1,8 +1,6 @@
-using DocPlanner.Interfaces;
-
 namespace DocPlanner.Models;
 
-public class Patient : IPatient
+public class Patient
 {
     public string Name { get; set; }
     public string SecondName { get; set; }

@@ -1,9 +1,13 @@
+using Asp.Versioning;
 using DocPlanner.Interfaces;
 using DocPlanner.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocPlanner.Controllers;
 
+[Authorize]
+[ApiVersion("1.0")]
 [ApiController]
 [Route("api/[controller]")]
 public class AvailabilityController : ControllerBase

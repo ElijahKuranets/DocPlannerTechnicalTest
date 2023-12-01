@@ -1,10 +1,13 @@
-﻿namespace DocPlanner.Models
+﻿using DocPlanner.Models;
+
+namespace DocPlanner.Models;
+
+public class Slot
 {
-    public class Slot
-    {
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
-        public Patient Patient { get; set; }
-        public string Comments { get; set; }
-    }
+    public Guid FacilityId { get; set; }
+    public DateTime Start { get; set; }
+    public DateTime End { get; set; }
+    public Patient Patient { get; set; }
+    public string Comments { get; set; }
 }
+
