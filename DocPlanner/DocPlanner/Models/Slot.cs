@@ -1,6 +1,4 @@
-﻿using DocPlanner.Models;
-
-namespace DocPlanner.Models;
+﻿namespace DocPlanner.Models;
 
 public class Slot
 {
