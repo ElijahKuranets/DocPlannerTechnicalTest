@@ -4,6 +4,7 @@ using System.Net;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using Moq;
+using Xunit;
 
 namespace DocPlanner.UnitTests
 {
@@ -16,7 +17,20 @@ namespace DocPlanner.UnitTests
         public async Task TakeSlotAsync_ReturnsFalse_OnFailure()
         {
             // Arrange
-            var slotToTake = new Slot { /* Populate with necessary data */ };
+            var slotToTake = new Slot
+            {
+                FacilityId = Guid.NewGuid(),
+                Start = new DateTime(2023, 06, 21, 12, 20, 00),
+                End = new DateTime(2023, 06, 21, 12, 20, 00),
+                Comments = "broke leg for test",
+                Patient = new Patient()
+                {
+                    Name = "Harry",
+                    SecondName = "Tester",
+                    Phone = "934",
+                    Email = "magic_test_outside_hogwarts@gmail.com",
+                }
+            };
             var httpResponse = new HttpResponseMessage { StatusCode = HttpStatusCode.BadRequest };
             var httpClient = SetupHttpClient(httpResponse);
             _mockHttpClientFactory.Setup(f => f.CreateClient("Base64AuthClient")).Returns(httpClient);
