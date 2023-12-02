@@ -43,7 +43,7 @@ builder.Services.Configure<List<UserCredentialsConfig>>(builder.Configuration.Ge
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo {Title = "My API", Version = "v1"});
+    c.SwaggerDoc("v1", new OpenApiInfo {Title = "DocPlanner API", Version = "v1"});
 
     c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
     {
