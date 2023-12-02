@@ -8,7 +8,7 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Net.Http.Headers;
 
-//initialize Serilog
+// Initialize Serilog
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
     .WriteTo.File("logs/myapp.txt", rollingInterval: RollingInterval.Day)
@@ -16,7 +16,7 @@ Log.Logger = new LoggerConfiguration()
 
 var builder = WebApplication.CreateBuilder(args);
 
-//register Serilog
+// Register Serilog
 builder.Host.UseSerilog();
 
 // Register Services
