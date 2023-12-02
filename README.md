@@ -30,8 +30,7 @@ dotnet build
 
 dotnet run 
 
-![image](https://github.com/ElijahKuranets/DocPlannerTechnicalTest/assets/25877866/86d7299d-97e5-4218-9b65-240fc7ee45fd)
-
+![DocPlannerSwaggerUI](https://github.com/ElijahKuranets/DocPlannerTechnicalTest/assets/25877866/09203872-2474-4ee1-ba77-785377bbccae)
 
 ## Contact
 If you have any questions or comments, please feel free to contact me at [your email].
