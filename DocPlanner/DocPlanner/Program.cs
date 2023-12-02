@@ -1,16 +1,15 @@
-﻿using Serilog;
-using System.Text;
-using System.Net.Http.Headers;
-using DocPlanner;
+﻿using DocPlanner;
 using DocPlanner.Interfaces;
 using DocPlanner.Models;
 using DocPlanner.Services;
-using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.OpenApi.Models;
+using Serilog;
+using System.Net.Http.Headers;
 
+//initialize Serilog
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
-    .WriteTo.Console()
     .WriteTo.File("logs/myapp.txt", rollingInterval: RollingInterval.Day)
     .CreateLogger();
 
@@ -19,22 +18,26 @@ var builder = WebApplication.CreateBuilder(args);
 //register Serilog
 builder.Host.UseSerilog();
 
-// Register ISlotService
+// Register Services
 builder.Services.AddTransient<ISlotService, SlotService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddSingleton<IHttpContextAccessorService, HttpContextAccessorService>();
 
-// Configure named HttpClients
-builder.Services.AddHttpClient("Base64AuthClient", client =>
+// Configure DockPlanner HttpClient
+builder.Services.AddHttpClient("Base64AuthClient", (serviceProvider, client) =>
 {
+    var httpContextAccessorService = serviceProvider.GetRequiredService<IHttpContextAccessorService>();
+    var currentContext = httpContextAccessorService.GetCurrentHttpContext();
+    var authorizationHeader = currentContext.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").LastOrDefault();
+
+    if (!string.IsNullOrEmpty(authorizationHeader))
+    {
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authorizationHeader);
+    }
     var apiConfig = builder.Configuration.GetSection("SlotServiceApi").Get<SlotServiceApiConfig>();
     client.BaseAddress = new Uri(apiConfig!.BaseUrl);
-
-    var authToken = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{apiConfig.Username}:{apiConfig.Password}"));
-    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authToken);
 });
-var apiConfig = builder.Configuration.GetSection("SlotServiceApi").Get<SlotServiceApiConfig>();
-builder.Services.AddSingleton(apiConfig);
-
+builder.Services.Configure<List<UserCredentialsConfig>>(builder.Configuration.GetSection("UserCredentials"));
 
 // Add services to the container
 builder.Services.AddEndpointsApiExplorer();
@@ -62,7 +65,7 @@ builder.Services.AddSwaggerGen(c =>
                     Id = "basic"
                 }
             },
-            new string[] { }
+            Array.Empty<string>()
         }
     });
 });

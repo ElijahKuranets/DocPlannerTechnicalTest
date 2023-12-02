@@ -1,12 +1,20 @@
 ﻿using DocPlanner.Interfaces;
+using DocPlanner.Models;
+using Microsoft.Extensions.Options;
 
-namespace DocPlanner.Services
+namespace DocPlanner.Services;
+
+public class UserService : IUserService
 {
-    public class UserService : IUserService
+    private readonly List<UserCredentialsConfig> _userCredentials;
+
+    public UserService(IOptions<List<UserCredentialsConfig>> userCredentialsOptions)
     {
-        public bool CheckUser(string username, string password)
-        {
-            return username.Equals("techuser") && password.Equals("passWord") || username.Equals("mamerto") && password.Equals("mellon");
-        }
+        _userCredentials = userCredentialsOptions.Value;
+    }
+
+    public bool CheckUser(string username, string password)
+    {
+        return _userCredentials.Any(uc => uc.Username.Equals(username) && uc.Password.Equals(password));
     }
 }
