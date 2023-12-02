@@ -3,6 +3,8 @@
 ## Overview
 This repository contains my implementation for the DocPlanner Technical Test. It's a proof of concept that demonstrates [briefly describe what your project does or its main purpose].
 
+![DocPlannerSwaggerUI](https://github.com/ElijahKuranets/DocPlannerTechnicalTest/assets/25877866/09203872-2474-4ee1-ba77-785377bbccae)
+
 ## Prerequisites
 Before you begin, ensure you have met the following requirements:
 - [.NET 7.0 SDK](https://dotnet.microsoft.com/download) or later installed.
@@ -30,7 +32,6 @@ dotnet build
 
 dotnet run 
 
-![DocPlannerSwaggerUI](https://github.com/ElijahKuranets/DocPlannerTechnicalTest/assets/25877866/09203872-2474-4ee1-ba77-785377bbccae)
 
 ## Contact
-If you have any questions or comments, please feel free to contact me at [your email].
+If you have any questions or comments, please feel free to contact me at ilia.kuranets@gmail.com.
