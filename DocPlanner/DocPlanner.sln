@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocPlanner", "DocPlanner\DocPlanner.csproj", "{9D172FA1-F59D-4E65-AAD5-6369F0B7D791}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocPlanner", "DocPlanner\DocPlanner.csproj", "{9D172FA1-F59D-4E65-AAD5-6369F0B7D791}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocPlanner.UnitTests", "DocPlanner.UnitTests\DocPlanner.UnitTests.csproj", "{9AEEDC55-324E-4D53-B20F-DCF72F1CB57C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocPlanner.UnitTests", "DocPlanner.UnitTests\DocPlanner.UnitTests.csproj", "{9AEEDC55-324E-4D53-B20F-DCF72F1CB57C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

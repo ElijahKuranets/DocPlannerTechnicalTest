@@ -1,4 +1,5 @@
 ﻿using DocPlanner;
+using DocPlanner.Filters;
 using DocPlanner.Interfaces;
 using DocPlanner.Models;
 using DocPlanner.Services;
@@ -68,6 +69,7 @@ builder.Services.AddSwaggerGen(c =>
             Array.Empty<string>()
         }
     });
+    c.SchemaFilter<SwaggerDateTimeFormatSchemaFilter>();
 });
 builder.Services.AddAuthentication("BasicAuthentication")
     .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
