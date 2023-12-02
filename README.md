@@ -1,7 +1,7 @@
 # DocPlanner Technical Test
 
 ## Overview
-This repository contains my implementation for the DocPlanner Technical Test. It's a proof of concept that demonstrates [briefly describe what your project does or its main purpose].
+This repository contains my implementation for the DocPlanner Technical Test. It's a proof of concept that demonstrates process of taking awailable slot to visit a doctor .
 
 ![DocPlannerSwaggerUI](https://github.com/ElijahKuranets/DocPlannerTechnicalTest/assets/25877866/09203872-2474-4ee1-ba77-785377bbccae)
 
