@@ -5,6 +5,8 @@ using System.Net.Http.Headers;
 using DocPlanner.Filters;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using Microsoft.Extensions.Options;
+using System.Reflection;
 
 namespace DocPlanner.Extensions;
 
@@ -31,7 +33,7 @@ public static class ServiceCollectionExtensions
     {
         builder.Host.UseSerilog((context, configuration) =>
             configuration.ReadFrom.Configuration(context.Configuration)
-            .WriteTo.File("logs/myapp.txt", rollingInterval: RollingInterval.Day));
+            .WriteTo.File("logs/docPlannerLog.txt", rollingInterval: RollingInterval.Day));
 
         services.AddLogging(loggingBuilder =>
             loggingBuilder.AddSerilog(dispose: true));
@@ -72,6 +74,10 @@ public static class ServiceCollectionExtensions
                 In = ParameterLocation.Header,
                 Description = "Basic Authorization header using the Bearer scheme."
             });
+
+            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            c.IncludeXmlComments(xmlPath);
 
             c.AddSecurityRequirement(new OpenApiSecurityRequirement
             {
