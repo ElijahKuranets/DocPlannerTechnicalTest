@@ -6,9 +6,9 @@ namespace DocPlanner.Services;
 
 public class UserService : IUserService
 {
-    private readonly List<UserCredentialsConfig> _userCredentials;
+    private readonly List<UserCredentials> _userCredentials;
 
-    public UserService(IOptions<List<UserCredentialsConfig>> userCredentialsOptions)
+    public UserService(IOptions<List<UserCredentials>> userCredentialsOptions)
     {
         _userCredentials = userCredentialsOptions.Value;
     }
