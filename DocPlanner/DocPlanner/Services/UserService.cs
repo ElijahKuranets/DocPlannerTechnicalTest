@@ -15,6 +15,6 @@ public class UserService : IUserService
 
     public bool CheckUser(string username, string password)
     {
-        return _userCredentials.Any(uc => uc.Username.Equals(username) && uc.Password.Equals(password));
+        return _userCredentials.Any(uc => uc.Username!.Equals(username) && uc.Password!.Equals(password));
     }
 }

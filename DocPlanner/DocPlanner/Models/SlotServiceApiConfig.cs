@@ -2,5 +2,5 @@ namespace DocPlanner.Models;
 
 public class SlotServiceApiConfig 
 {
-    public string BaseUrl { get; init; }
+    public string? BaseUrl { get; init; }
 }

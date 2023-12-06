@@ -2,10 +2,10 @@
 
 public class Slot
 {
-    public Guid FacilityId { get; set; }
-    public DateTime Start { get; set; }
-    public DateTime End { get; set; }
-    public Patient Patient { get; set; }
-    public string Comments { get; set; }
+    public Guid FacilityId { get; init; }
+    public DateTime Start { get; init; }
+    public DateTime End { get; init; }
+    public Patient? Patient { get; init; }
+    public string? Comments { get; init; }
 }
 

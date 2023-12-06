@@ -12,24 +12,20 @@ namespace DocPlanner.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection ConfigureSettings(this IServiceCollection services,
+    public static void ConfigureSettings(this IServiceCollection services,
         IConfiguration configuration)
     {
         services.Configure<List<UserCredentials>>(configuration.GetSection(nameof(UserCredentials)));
-
-        return services;
     }
 
-    public static IServiceCollection AddServices(this IServiceCollection services)
+    public static void AddServices(this IServiceCollection services)
     {
         services.AddScoped<IUserService, UserService>();
         services.AddTransient<ISlotService, SlotService>();
         services.AddSingleton<IHttpContextAccessorService, HttpContextAccessorService>();
-
-        return services;
     }
 
-    public static IServiceCollection SetupLogging(this IServiceCollection services, WebApplicationBuilder builder)
+    public static void SetupLogging(this IServiceCollection services, WebApplicationBuilder builder)
     {
         builder.Host.UseSerilog((context, configuration) =>
             configuration.ReadFrom.Configuration(context.Configuration)
@@ -37,11 +33,9 @@ public static class ServiceCollectionExtensions
 
         services.AddLogging(loggingBuilder =>
             loggingBuilder.AddSerilog(dispose: true));
-
-        return services;
     }
 
-    public static IServiceCollection SetupHttpClient(this IServiceCollection services,
+    public static void SetupHttpClient(this IServiceCollection services,
         IConfiguration configuration)
     {
         services.AddHttpClient("Base64AuthClient", (serviceProvider, client) =>
@@ -55,12 +49,11 @@ public static class ServiceCollectionExtensions
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authorizationHeader);
             }
             var apiConfig = configuration.GetSection("SlotServiceApi").Get<SlotServiceApiConfig>();
-            client.BaseAddress = new Uri(apiConfig!.BaseUrl);
+            client.BaseAddress = new Uri(apiConfig?.BaseUrl);
         });
-        return services;
     }
 
-    public static IServiceCollection SetupSwagger(this IServiceCollection services)
+    public static void SetupSwagger(this IServiceCollection services)
     {
         services.AddSwaggerGen(c =>
         {
@@ -95,8 +88,6 @@ public static class ServiceCollectionExtensions
             });
             c.SchemaFilter<SwaggerDateTimeFormatSchemaFilter>();
         });
-
-        return services;
     }
 
     public static void ConfigureExceptionHandling(this WebApplication app)
