@@ -9,17 +9,16 @@ using Xunit;
 
 namespace DocPlanner.UnitTests;
 
-public class WeeklyAvailabilityTest
+public class AvailabilityControllerTests
 {
     private readonly AvailabilityController _controller;
-    private readonly Mock<ISlotService> mockSlotService;
-    private readonly Mock<ILogger<AvailabilityController>> mockLogger;
-    
-    public WeeklyAvailabilityTest() //AvailabilityControllerTests()
+    private readonly Mock<ISlotService> _mockSlotService;
+
+    public AvailabilityControllerTests()
     {
-        mockSlotService = new Mock<ISlotService>(); 
-        mockLogger = new Mock<ILogger<AvailabilityController>>();
-        _controller = new AvailabilityController(mockSlotService.Object, mockLogger.Object);
+        _mockSlotService = new Mock<ISlotService>(); 
+        Mock<ILogger<AvailabilityController>> mockLogger = new();
+        _controller = new AvailabilityController(_mockSlotService.Object, mockLogger.Object);
     }
     
     [Theory]
@@ -54,8 +53,8 @@ public class WeeklyAvailabilityTest
     public async Task GetWeeklyAvailability_WhenExceptionOccurs_ReturnsStatusCode500()
     {
         // Arrange
-        var testDate = "20231201";
-        mockSlotService.Setup(s => s.GetWeeklyAvailabilityAsync(It.IsAny<DateTime>()))
+        const string testDate = "20231201";
+        _mockSlotService.Setup(s => s.GetWeeklyAvailabilityAsync(It.IsAny<DateTime>()))
             .ThrowsAsync(new Exception("Test exception"));
 
         // Act
@@ -64,15 +63,28 @@ public class WeeklyAvailabilityTest
         // Assert
         result.Should().BeOfType<ObjectResult>();
         var objectResult = result as ObjectResult;
-        objectResult.StatusCode.Should().Be(500);
+        objectResult!.StatusCode.Should().Be(500);
     }
     
     [Fact]
     public async Task TakeSlot_WithValidSlot_ReturnsSuccessMessage()
     {
         // Arrange
-        var slot = new Slot { /* Populate with valid data */ };
-        mockSlotService.Setup(s => s.TakeSlotAsync(It.IsAny<Slot>()))
+        var slot = new Slot
+        {
+            FacilityId = Guid.NewGuid(),
+            Start= new DateTime(),
+            End = new DateTime(),
+            Comments = "comments",
+            Patient = new Patient
+            {
+                Name = "patientsTestName",
+                SecondName = "patientsTestSecondName",
+                Email = "patientsTestEmail@gmail.com",
+                Phone = "111 111 111"
+            }
+        };
+        _mockSlotService.Setup(s => s.TakeSlotAsync(It.IsAny<Slot>()))
             .ReturnsAsync(true);
 
         // Act
@@ -81,6 +93,6 @@ public class WeeklyAvailabilityTest
         // Assert
         result.Should().BeOfType<OkObjectResult>();
         var okResult = result as OkObjectResult;
-        okResult.Value.Should().Be("TimeSlot successfully booked.");
+        okResult!.Value.Should().Be("TimeSlot successfully booked.");
     }
 }

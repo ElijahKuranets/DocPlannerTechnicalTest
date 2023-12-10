@@ -9,7 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e5faf40-2a25-41e4-b2ab-4637a6f18683" name="Changes" comment="" />
+    <list default="true" id="4e5faf40-2a25-41e4-b2ab-4637a6f18683" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/DocPlanner.UnitTests/AvailabilityControllerTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DocPlanner/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DocPlanner/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DocPlanner.UnitTests/DocPlanner.UnitTests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DocPlanner.UnitTests/DocPlanner.UnitTests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DocPlanner.UnitTests/MockHttpMessageHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DocPlanner.UnitTests/TakeSlotTest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DocPlanner.UnitTests/WeeklyAvailabilityTest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DocPlanner.UnitTests/WeeklySlotsTest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DocPlanner/DocPlanner.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DocPlanner/DocPlanner.csproj" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +26,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Toolset" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -28,25 +40,30 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.DocPlanner: http.executor&quot;: &quot;Run&quot;,
+    &quot;2679bba2-78d1-4f2f-91f5-c7f5ac7c9e98.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Elijah\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Elijah\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Elijah\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Elijah\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
       &quot;C:\\Users\\Elijah\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected=".NET Launch Settings Profile.DocPlanner: http">
     <configuration name="DocPlanner: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/DocPlanner/DocPlanner.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net7.0" />
@@ -78,11 +95,24 @@
       <updated>1701362201235</updated>
       <workItem from="1701362202609" duration="1828000" />
       <workItem from="1701965191929" duration="217000" />
+      <workItem from="1702233169966" duration="6249000" />
+      <workItem from="1702249467189" duration="350000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
