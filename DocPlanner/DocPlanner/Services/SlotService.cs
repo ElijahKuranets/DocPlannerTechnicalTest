@@ -1,4 +1,5 @@
 using System.Text;
+using DocPlanner.Clients;
 using DocPlanner.Interfaces;
 using DocPlanner.Models;
 using Newtonsoft.Json;
@@ -10,11 +11,9 @@ public class SlotService : ISlotService
     private readonly HttpClient _httpClient;
     private readonly ILogger<SlotService> _logger;
 
-    public SlotService(
-        IHttpClientFactory httpClientFactory, 
-        ILogger<SlotService> logger)
+    public SlotService(DocPlannerClient docPlanner, ILogger<SlotService> logger)
     {
-        _httpClient = httpClientFactory.CreateClient("Base64AuthClient");
+        _httpClient = docPlanner.Client;
         _logger = logger;
     }
 

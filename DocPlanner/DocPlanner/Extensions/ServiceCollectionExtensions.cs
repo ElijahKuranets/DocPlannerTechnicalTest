@@ -1,11 +1,11 @@
-﻿using DocPlanner.Interfaces;
+﻿using DocPlanner.Clients;
+using DocPlanner.Filters;
+using DocPlanner.Interfaces;
 using DocPlanner.Models;
 using DocPlanner.Services;
-using System.Net.Http.Headers;
-using DocPlanner.Filters;
 using Microsoft.OpenApi.Models;
 using Serilog;
-using Microsoft.Extensions.Options;
+using System.Net.Http.Headers;
 using System.Reflection;
 
 namespace DocPlanner.Extensions;
@@ -38,7 +38,7 @@ public static class ServiceCollectionExtensions
     public static void SetupHttpClient(this IServiceCollection services,
         IConfiguration configuration)
     {
-        services.AddHttpClient("Base64AuthClient", (serviceProvider, client) =>
+        services.AddHttpClient<DocPlannerClient>((serviceProvider, client) =>
         {
             var httpContextAccessorService = serviceProvider.GetRequiredService<IHttpContextAccessorService>();
             var currentContext = httpContextAccessorService.GetCurrentHttpContext();
@@ -48,7 +48,7 @@ public static class ServiceCollectionExtensions
             {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authorizationHeader);
             }
-            var apiConfig = configuration.GetSection("SlotServiceApi").Get<SlotServiceApiConfig>();
+            var apiConfig = configuration.GetSection(nameof(SlotServiceApiConfig)).Get<SlotServiceApiConfig>();
             client.BaseAddress = new Uri(apiConfig?.BaseUrl);
         });
     }
