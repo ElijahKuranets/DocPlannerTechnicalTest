@@ -10,14 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e5faf40-2a25-41e4-b2ab-4637a6f18683" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/DocPlanner.UnitTests/AvailabilityControllerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DocPlanner.UnitTests/BasicAuthenticationHandlerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DocPlanner.UnitTests/Clients/DocPlannerClientTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DocPlanner.UnitTests/Controllers/AvailabilityControllerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DocPlanner.UnitTests/Filters/SwaggerDateTimeFormatSchemaFilterTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DocPlanner.UnitTests/Services/HttpContextAccessorServiceTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DocPlanner.UnitTests/Services/SlotServiceTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DocPlanner.UnitTests/Services/UserServiceTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DocPlanner/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DocPlanner/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DocPlanner.UnitTests/DocPlanner.UnitTests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DocPlanner.UnitTests/DocPlanner.UnitTests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DocPlanner.UnitTests/MockHttpMessageHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DocPlanner.UnitTests/TakeSlotTest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DocPlanner.UnitTests/WeeklyAvailabilityTest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DocPlanner.UnitTests/WeeklySlotsTest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DocPlanner/DocPlanner.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DocPlanner/DocPlanner.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DocPlanner.UnitTests/AvailabilityControllerTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DocPlanner/Controllers/AvailabilityController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DocPlanner/Controllers/AvailabilityController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DocPlanner/Services/HttpContextAccessorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DocPlanner/Services/HttpContextAccessorService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,31 +41,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.DocPlanner: http.executor&quot;: &quot;Run&quot;,
-    &quot;2679bba2-78d1-4f2f-91f5-c7f5ac7c9e98.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.DocPlanner: http.executor": "Run",
+    "2679bba2-78d1-4f2f-91f5-c7f5ac7c9e98.executor": "Debug",
+    "30809626-9f6f-4f9c-bfcc-9a8d62e263f5.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "RiderDotCoverFilteringPageId",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Elijah\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Elijah\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Elijah\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Elijah\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Elijah\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\Elijah\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.DocPlanner: http">
     <configuration name="DocPlanner: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/DocPlanner/DocPlanner.csproj" />
@@ -97,11 +101,22 @@
       <workItem from="1701965191929" duration="217000" />
       <workItem from="1702233169966" duration="6249000" />
       <workItem from="1702249467189" duration="350000" />
+      <workItem from="1702316709042" duration="15256000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnitTestsCoverage.Settings">
+    <option name="coveragePercentColumnWidth" value="132" />
+    <option name="sortOrder" value="DESCENDING" />
+    <option name="sortedColumn" value="1" />
+    <option name="symbolColumnWidth" value="192" />
+    <coverage-tree-state>
+      <expand />
+      <select />
+    </coverage-tree-state>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -116,5 +131,37 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/DocPlanner/Controllers/AvailabilityController.cs</url>
+          <line>144</line>
+          <properties documentPath="C:\DocPlannerInterviewTest\DocPlannerTechnicalTest\DocPlanner\DocPlanner\Controllers\AvailabilityController.cs" initialLine="144" containingFunctionPresentation="Method 'TakeSlot'">
+            <startOffsets>
+              <option value="6222" />
+            </startOffsets>
+            <endOffsets>
+              <option value="6239" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/DocPlanner.UnitTests/Controllers/AvailabilityControllerTests.cs</url>
+          <line>211</line>
+          <properties documentPath="C:\DocPlannerInterviewTest\DocPlannerTechnicalTest\DocPlanner\DocPlanner.UnitTests\AvailabilityControllerTests.cs" initialLine="194" containingFunctionPresentation="Method 'GetWeeklySlots_WithValidDate_NoSlots_Returns'">
+            <startOffsets>
+              <option value="6642" />
+            </startOffsets>
+            <endOffsets>
+              <option value="6691" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -54,6 +54,7 @@ public class AvailabilityController : ControllerBase
         try
         {
             var availability = await _slotService.GetWeeklyAvailabilityAsync(parsedDate);
+
             _logger.LogInformation("Weekly availability retrieved successfully for date: {Date}", date);
             return Ok(availability);
         }
@@ -92,7 +93,7 @@ public class AvailabilityController : ControllerBase
         try
         {
             var slots = await _slotService.GetWeeklySlotsAsync(parsedDate);
-            if (slots == null || !slots.Any())
+            if (!slots.Any())
             {
                 _logger.LogInformation("No slots available for date: {Date}", date);
                 return NotFound("No slots available.");
